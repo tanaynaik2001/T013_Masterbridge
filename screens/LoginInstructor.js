@@ -5,6 +5,7 @@ import {useNavigation} from '@react-navigation/native';
 import {firebase} from '../firebase/config';
 
 const LoginInstructor = () => {
+  const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -24,7 +25,7 @@ const LoginInstructor = () => {
               return;
             }
             const user = firestoreDocument.data();
-            navigation.navigate('Home', {user});
+            navigation.navigate('InstructorHomescreen', {user});
           })
           .catch((error) => {
             alert(error);
@@ -39,7 +40,7 @@ const LoginInstructor = () => {
     <View style={styles.container}>
       <Card style={styles.cardContainer}>
         <Card.Content>
-          <Card.Title title={`Welcome Prof. ${name}`} />
+          <Card.Title title={`Welcome Prof. ${email}`} />
           <Card.Title title="Email" />
           <TextInput
             placeholder="Enter your valid email address"
@@ -59,15 +60,7 @@ const LoginInstructor = () => {
             color="black"
             mode="outlined"
             style={styles.btn}
-            onPress={() => {
-              if (email == '' || password == '') {
-                Alert.alert('Error', 'Please fill all the fields', [
-                  {text: 'Okay'},
-                ]);
-              } else {
-                console.log('DONE');
-              }
-            }}>
+            onPress={() => onLoginPress()}>
             Submit
           </Button>
         </Card.Content>

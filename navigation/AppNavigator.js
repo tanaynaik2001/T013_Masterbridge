@@ -12,6 +12,7 @@ import Quiz from '../screens/Quiz';
 import VideoScreen from '../screens/VideoScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import instructor_courses from '../screens/instructor_courses';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -52,6 +53,15 @@ const StudentHomeScreen = () => {
     </Stack.Navigator>
   );
 };
+
+const InstructorHomeScreen = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="InstructorCourses" component={instructor_courses} />
+    </Stack.Navigator>
+  );
+};
+
 const AppNavigator = () => {
   return (
     <NavigationContainer>
@@ -60,6 +70,10 @@ const AppNavigator = () => {
         <Stack.Screen name="LoginStudent" component={LoginStudent} />
         <Stack.Screen name="LoginInstructor" component={LoginInstructor} />
         <Stack.Screen name="StudentHomescreen" component={StudentHomeScreen} />
+        <Stack.Screen
+          name="InstructorHomescreen"
+          component={InstructorHomeScreen}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
