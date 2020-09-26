@@ -1,19 +1,45 @@
 import Course from '../components/Course';
 import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import {FAB} from 'react-native-paper';
 
-export default class instructor_courses extends Component {
+class InstructorCourses extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
 
   render() {
+    const {navigation} = this.props;
     return (
-      <View>
+      <View style={styles.container}>
         <Text> instructor_courses </Text>
+        <FAB
+          style={styles.fab}
+          small
+          icon="plus"
+          onPress={() => navigation.navigate('Create Course')}
+        />
       </View>
     );
   }
 }
+
+export default function (props) {
+  const navigation = useNavigation();
+
+  return <InstructorCourses {...props} navigation={navigation} />;
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  fab: {
+    position: 'absolute',
+    margin: 16,
+    right: 0,
+    bottom: 0,
+  },
+});
