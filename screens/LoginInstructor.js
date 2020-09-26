@@ -1,22 +1,39 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, View, TextInput, Alert } from "react-native";
-import { Card, Button } from "react-native-paper";
-import { useNavigation } from "@react-navigation/native";
-import AsyncStorage from "@react-native-community/async-storage";
+import React, {useState} from 'react';
+import {StyleSheet, Text, View, TextInput, Alert} from 'react-native';
+import {Card, Button} from 'react-native-paper';
+import {useNavigation} from '@react-navigation/native';
 
 const LoginInstructor = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const profile = async () => {
-    try {
-      setName(await AsyncStorage.getItem("name_key"));
-    } catch (error) {
-      console.log(error);
-    }
+  const onLoginPress = () => {
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then((response) => {
+        const uid = response.user.uid;
+        const usersRef = firebase.firestore().collection('users');
+        usersRef
+          .doc(uid)
+          .get()
+          .then((firestoreDocument) => {
+            if (!firestoreDocument.exists) {
+              alert('User does not exist anymore.');
+              return;
+            }
+            const user = firestoreDocument.data();
+            navigation.navigate('Home', {user});
+          })
+          .catch((error) => {
+            alert(error);
+          });
+      })
+      .catch((error) => {
+        alert(error);
+      });
   };
-  profile();
+
   return (
     <View style={styles.container}>
       <Card style={styles.cardContainer}>
@@ -42,15 +59,14 @@ const LoginInstructor = () => {
             mode="outlined"
             style={styles.btn}
             onPress={() => {
-              if (email == "" || password == "") {
-                Alert.alert("Error", "Please fill all the fields", [
-                  { text: "Okay" },
+              if (email == '' || password == '') {
+                Alert.alert('Error', 'Please fill all the fields', [
+                  {text: 'Okay'},
                 ]);
               } else {
-                console.log("DONE");
+                console.log('DONE');
               }
-            }}
-          >
+            }}>
             Submit
           </Button>
         </Card.Content>
@@ -79,7 +95,7 @@ const styles = StyleSheet.create({
   btn: {
     marginVertical: 10,
     marginHorizontal: 90,
-    borderColor: "black",
+    borderColor: 'black',
     borderWidth: 1,
     borderRadius: 15,
   },

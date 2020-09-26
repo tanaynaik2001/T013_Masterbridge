@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -6,18 +6,48 @@ import {
   TextInput,
   Dimensions,
   Alert,
-} from "react-native";
-import { Card, Button, RadioButton } from "react-native-paper";
-import { useNavigation } from "@react-navigation/native";
-import AsyncStorage from "@react-native-community/async-storage";
+} from 'react-native';
+import {Card, Button, RadioButton} from 'react-native-paper';
+import {useNavigation} from '@react-navigation/native';
+import {firebase} from '../firebase/config';
 
 const Signup = () => {
-  const name_key = "name_key";
   const navigation = useNavigation();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [value, setValue] = useState("");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [value, setValue] = useState('');
+
+  const onRegisterPress = () => {
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then((response) => {
+        const uid = response.user.uid;
+        const data = {
+          id: uid,
+          email,
+          name,
+        };
+
+        const usersRef = firebase.firestore().collection('users');
+        usersRef
+          .doc(uid)
+          .set(data)
+          .then(
+            value === 'Student'
+              ? navigation.navigate('LoginStudent')
+              : navigation.navigate('LoginInstructor'),
+            {user: data},
+          )
+          .catch((error) => {
+            alert(error);
+          })
+          .catch((error) => {
+            alert(error);
+          });
+      });
+  };
   return (
     <View style={styles.container}>
       <Card style={styles.cardContainer}>
@@ -48,13 +78,12 @@ const Signup = () => {
           <Card.Title title="You are?" />
           <RadioButton.Group
             value={value}
-            onValueChange={(text) => setValue(text)}
-          >
+            onValueChange={(text) => setValue(text)}>
             <View style={styles.radBtn}>
               <Text>Student</Text>
               <RadioButton value="Student" color="red" />
             </View>
-            <View style={{ ...styles.radBtn, marginHorizontal: 6 }}>
+            <View style={{...styles.radBtn, marginHorizontal: 6}}>
               <Text>Instructor</Text>
               <RadioButton value="Instructor" color="red" />
             </View>
@@ -63,23 +92,7 @@ const Signup = () => {
             color="black"
             mode="outlined"
             style={styles.btn}
-            onPress={async () => {
-              if (name == "" || email == "" || password == "" || value == "") {
-                Alert.alert("Error", "Please fill all the fields", [
-                  { text: "Okay" },
-                ]);
-              } else {
-                value == "Student"
-                  ? navigation.navigate("LoginStudent")
-                  : navigation.navigate("LoginInstructor");
-                try {
-                  await AsyncStorage.setItem(name_key, name);
-                } catch (error) {
-                  console.log(error);
-                }
-              }
-            }}
-          >
+            onPress={() => onRegisterPress()}>
             Submit
           </Button>
         </Card.Content>
@@ -105,15 +118,15 @@ const styles = StyleSheet.create({
   btn: {
     marginVertical: 10,
     marginHorizontal: 90,
-    borderColor: "black",
+    borderColor: 'black',
     borderWidth: 1,
     borderRadius: 15,
   },
   radBtn: {
-    display: "flex",
-    justifyContent: "space-around",
-    alignItems: "center",
-    flexDirection: "row",
+    display: 'flex',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    flexDirection: 'row',
   },
   container: {
     flex: 1,

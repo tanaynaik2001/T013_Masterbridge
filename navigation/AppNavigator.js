@@ -1,9 +1,9 @@
-import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import Signup from "../screens/Signup";
-import LoginStudent from "../screens/LoginStudent";
-import LoginInstructor from "../screens/LoginInstructor";
+import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import Signup from '../screens/Signup';
+import LoginStudent from '../screens/LoginStudent';
+import LoginInstructor from '../screens/LoginInstructor';
 
 const MyStack = createStackNavigator();
 

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "551093808020",
+    "firebase_url": "https://online-learning-app-hackathon.firebaseio.com",
+    "project_id": "online-learning-app-hackathon",
+    "storage_bucket": "online-learning-app-hackathon.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:551093808020:android:a7bccb478db0a2bc057d81",
+        "android_client_info": {
+          "package_name": "com.codeit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "551093808020-v7k5lk4a4lct8u1aarhe9t5m7vjgfeaa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAj72GbZ10CtaagU-5NCZs_iIpn-GFa8RE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "551093808020-v7k5lk4a4lct8u1aarhe9t5m7vjgfeaa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
