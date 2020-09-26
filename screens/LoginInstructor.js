@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, View, TextInput, Alert} from 'react-native';
 import {Card, Button} from 'react-native-paper';
 import {useNavigation} from '@react-navigation/native';
+import {firebase} from '../firebase/config';
 
 const LoginInstructor = () => {
   const [email, setEmail] = useState('');

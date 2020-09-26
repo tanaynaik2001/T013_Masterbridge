@@ -2,8 +2,10 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, View, TextInput, Alert} from 'react-native';
 import {Card, Button} from 'react-native-paper';
 import {useNavigation} from '@react-navigation/native';
+import {firebase} from '../firebase/config';
 
 const LoginStudent = () => {
+  const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -23,7 +25,7 @@ const LoginStudent = () => {
               return;
             }
             const user = firestoreDocument.data();
-            navigation.navigate('Home', {user});
+            navigation.navigate('StudentHomescreen', {user});
           })
           .catch((error) => {
             alert(error);
@@ -56,15 +58,7 @@ const LoginStudent = () => {
             color="black"
             mode="outlined"
             style={styles.btn}
-            onPress={() => {
-              if (email == '' || password == '') {
-                Alert.alert('Error', 'Please fill all the fields', [
-                  {text: 'Okay'},
-                ]);
-              } else {
-                console.log('DONE');
-              }
-            }}>
+            onPress={() => onLoginPress()}>
             Submit
           </Button>
         </Card.Content>
