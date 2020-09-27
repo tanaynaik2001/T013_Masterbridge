@@ -16,6 +16,7 @@ import InstructorCourses from '../screens/instructor_courses';
 import InstructorVideoScreen from '../screens/InstructorVideoScreen';
 import InstructorCourseDetails from '../screens/InstructorCourseDetails';
 import InstructorQuiz from '../screens/InstructorQuiz';
+import MainStack from '../screens/studentQuiz/navigation';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -42,7 +43,7 @@ const Content = () => {
       initialRouteName="Video">
       <Tab.Screen name="Video" component={VideoScreen} />
       <Tab.Screen name="Details" component={CourseDetails} />
-      <Tab.Screen name="Quiz" component={Quiz} />
+      <Tab.Screen name="Quiz" component={MainStack} />
       <Tab.Screen name="Analytics" component={Analytics} />
     </Tab.Navigator>
   );
@@ -95,20 +96,13 @@ const InstructorCreateContent = () => {
   );
 };
 
-
-
-
-
-
-
-
 const AppNavigator = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator headerMode="none"  >
-      <Stack.Screen name="LoginStudent" component={LoginStudent} />
-       <Stack.Screen name="SignUp" component={Signup} />
-        
+      <Stack.Navigator headerMode="none">
+        <Stack.Screen name="LoginStudent" component={LoginStudent} />
+        <Stack.Screen name="SignUp" component={Signup} />
+
         <Stack.Screen name="LoginInstructor" component={LoginInstructor} />
         <Stack.Screen name="StudentHomescreen" component={StudentHomeScreen} />
         <Stack.Screen
