@@ -37,6 +37,7 @@ const LoginStudent = () => {
   };
   return (
     <View style={styles.container}>
+      
  
    <Text
         style={{
