@@ -11,7 +11,11 @@ import ImagePicker from 'react-native-image-picker';
 import {Card} from 'react-native-paper';
 
 const InstructorCourseDetails = () => {
+<<<<<<< HEAD
   const [Source, setSource] = useState('');
+=======
+  const [source, setSource] = useState('');
+>>>>>>> eb289b49bc802f394a4a5fb50064778d99515fb3
 
   const pickImage = () => {
     const options = {
@@ -37,9 +41,14 @@ const InstructorCourseDetails = () => {
       } else if (response.customButton) {
         console.log('User tapped custom button: ', response.customButton);
       } else {
+<<<<<<< HEAD
         const source = {path: response.path};
         setSource(source);
         console.log(Source)
+=======
+        const source = {uri: response.uri};
+        setSource(source);
+>>>>>>> eb289b49bc802f394a4a5fb50064778d99515fb3
 
         // You can also display the image using data:
         // const source = { uri: 'data:image/jpeg;base64,' + response.data };
@@ -58,7 +67,11 @@ const InstructorCourseDetails = () => {
             padding: 10,
           }}
         />
+<<<<<<< HEAD
         <Card.Title title="Course Description" />
+=======
+        <Card.Title title="Coure Description" />
+>>>>>>> eb289b49bc802f394a4a5fb50064778d99515fb3
         <TextInput
           style={{
             borderWidth: 1,
@@ -74,7 +87,11 @@ const InstructorCourseDetails = () => {
         <TouchableOpacity style={styles.loginBtn} onPress={pickImage}>
           <Text style={styles.text}>Select Image</Text>
         </TouchableOpacity>
+<<<<<<< HEAD
         <Image source={Source} style={{width: 50, height: 50}} />
+=======
+        <Image source={source} style={{width: 50, height: 50}} />
+>>>>>>> eb289b49bc802f394a4a5fb50064778d99515fb3
       </Card>
     </View>
   );
