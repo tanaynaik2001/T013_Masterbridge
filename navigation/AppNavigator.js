@@ -87,8 +87,8 @@ const InstructorCreateContent = () => {
         },
       })}
       initialRouteName="Upload Details">
-      <Tab.Screen name="Upload Video" component={InstructorVideoScreen} />
       <Tab.Screen name="Upload Details" component={InstructorCourseDetails} />
+      <Tab.Screen name="Upload Video" component={InstructorVideoScreen} />
       <Tab.Screen name="Upload Quiz" component={InstructorQuiz} />
       <Tab.Screen name="Analytics" component={Analytics} />
     </Tab.Navigator>
