@@ -6,6 +6,7 @@ import {
   TextInput,
   Dimensions,
   Alert,
+  KeyboardAvoidingView,
 } from 'react-native';
 import {Card, Button, RadioButton} from 'react-native-paper';
 import {useNavigation} from '@react-navigation/native';
@@ -49,7 +50,9 @@ const Signup = () => {
       });
   };
   return (
+    
     <View style={styles.container}>
+      
       <Card style={styles.cardContainer}>
         <Card.Content>
           <Card.Title title="Name" />
@@ -97,7 +100,9 @@ const Signup = () => {
           </Button>
         </Card.Content>
       </Card>
+      
     </View>
+    
   );
 };
 

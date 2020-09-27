@@ -40,7 +40,7 @@ const LoginInstructor = () => {
     <View style={styles.container}>
       <Card style={styles.cardContainer}>
         <Card.Content>
-          <Card.Title title={`Welcome Prof. ${email}`} />
+          <Card.Title title={'Welcome Professor'} />
           <Card.Title title="Email" />
           <TextInput
             placeholder="Enter your valid email address"

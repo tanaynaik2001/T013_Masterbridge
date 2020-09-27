@@ -95,12 +95,16 @@ const InstructorCreateContent = () => {
   );
 };
 
+
+
+
 const AppNavigator = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator headerMode="none">
-        <Stack.Screen name="SignUp" component={Signup} />
-        <Stack.Screen name="LoginStudent" component={LoginStudent} />
+      <Stack.Navigator headerMode="none"  >
+      <Stack.Screen name="LoginStudent" component={LoginStudent} />
+       <Stack.Screen name="SignUp" component={Signup} />
+        
         <Stack.Screen name="LoginInstructor" component={LoginInstructor} />
         <Stack.Screen name="StudentHomescreen" component={StudentHomeScreen} />
         <Stack.Screen

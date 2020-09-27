@@ -6,7 +6,7 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 const Course = () => {
   const navigation = useNavigation();
   return (
-    <TouchableOpacity onPress={() => navigation.navigate('Content')}>
+    <TouchableOpacity onPress={() => navigation.navigate('Analytics')}>
       <View style={{flexDirection: 'row', margin: 10, marginBottom: 1}}>
         <Image
           source={require('./React.jpeg')}
@@ -14,7 +14,7 @@ const Course = () => {
             width: '45%',
             borderWidth: 1,
             borderColor: 'black',
-            height: 100,
+            height: 140,
           }}
         />
         <View
@@ -28,9 +28,9 @@ const Course = () => {
               color: 'black',
             }}
             numberOfLines={3}>
-            Title
+            React Native - The Practical Guide[2020]
           </Text>
-          <Text style={{fontSize: 12, color: 'black'}}> Name </Text>
+          <Text style={{fontSize: 12, color: 'black'}}> Academind By Maximillan </Text>
         </View>
       </View>
     </TouchableOpacity>

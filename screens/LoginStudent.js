@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View, TextInput, Alert} from 'react-native';
-import {Card, Button} from 'react-native-paper';
+import {StyleSheet, Text, View, TextInput,KeyboardAvoidingView} from 'react-native';
+import {Card,Button} from 'react-native-paper';
 import {useNavigation} from '@react-navigation/native';
 import {firebase} from '../firebase/config';
 
@@ -37,8 +37,25 @@ const LoginStudent = () => {
   };
   return (
     <View style={styles.container}>
+ 
+   <Text
+        style={{
+          margin: 30,
+          marginBottom:0,
+          textAlign: 'center',
+          fontSize: 25,
+          fontStyle: 'italic',
+        }}>  Student Login Page</Text>
+        <View>
+        <Button  
+         style={styles.btn}
+            mode="outlined"
+             onPress={()=> navigation.navigate('LoginInstructor')}> Login as Instructor </Button>
+        </View>
+      
       <Card style={styles.cardContainer}>
         <Card.Content>
+        
           <Card.Title title="Email" />
           <TextInput
             placeholder="Enter your valid email address"
@@ -55,14 +72,22 @@ const LoginStudent = () => {
             onChangeText={(text) => setPassword(text)}
           />
           <Button
-            color="black"
+           
             mode="outlined"
             style={styles.btn}
             onPress={() => onLoginPress()}>
             Submit
           </Button>
+        
+        <Button  
+            mode="outlined"
+            style={styles.btn} onPress={()=> navigation.navigate('SignUp')}> Sign Up </Button>
+             
         </Card.Content>
       </Card>
+   
+      
+      
     </View>
   );
 };
@@ -74,7 +99,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   cardContainer: {
-    marginVertical: 150,
+    marginVertical: 50,
     marginHorizontal: 20,
     elevation: 5,
     borderRadius: 10,
