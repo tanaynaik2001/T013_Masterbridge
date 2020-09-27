@@ -98,6 +98,10 @@ const InstructorCreateContent = () => {
 
 
 
+
+
+
+
 const AppNavigator = () => {
   return (
     <NavigationContainer>
