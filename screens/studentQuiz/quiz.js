@@ -25,6 +25,15 @@ class Quiz extends React.Component {
         {id: '4', text: 'Apple', correct: true},
       ],
     },
+    {
+      question: "Which company created react native?",
+      answers: [
+        {id: '1', text: 'Google'},
+        {id: '2', text: 'Facebook', correct: true},
+        {id: '3', text: 'Microsoft'},
+        {id: '4', text: 'Apple'},
+      ],
+    },
   ];
 
   state = {
@@ -73,7 +82,6 @@ class Quiz extends React.Component {
   render() {
     const questions = this.questions;
     const question = questions[this.state.activeQuestionIndex];
-    const {navigation} = this.props;
     return (
       <View style={[styles.container, {backgroundColor: 'blue'}]}>
         <StatusBar barStyle="light-content" />

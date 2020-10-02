@@ -51,13 +51,13 @@ const LoginStudent = () => {
         <Button  
          style={styles.btn}
             mode="outlined"
-             onPress={()=> navigation.navigate('LoginInstructor')}> Login as Instructor </Button>
+             onPress={()=> navigation.navigate('LoginInstructor')}>  Instructor? </Button>
         </View>
       
       <Card style={styles.cardContainer}>
         <Card.Content>
         
-          <Card.Title title="Email" />
+          <Card.Title  title="Email" />
           <TextInput
             placeholder="Enter your valid email address"
             style={styles.inputContainer}
@@ -104,6 +104,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     elevation: 5,
     borderRadius: 10,
+  
+ 
   },
   inputContainer: {
     borderWidth: 1.5,

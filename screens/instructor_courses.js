@@ -14,7 +14,7 @@ class InstructorCourses extends Component {
     const {navigation} = this.props;
     return (
       <View style={styles.container}>
-        <Text> instructor_courses </Text>
+        <Text>  </Text>
         <FAB
           style={styles.fab}
           small

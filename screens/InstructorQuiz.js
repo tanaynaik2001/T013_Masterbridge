@@ -4,7 +4,7 @@ import {StyleSheet, Text, View} from 'react-native';
 const InstructorQuiz = () => {
   return (
     <View>
-      <Text>Upload quiz</Text>
+      <Text></Text>
     </View>
   );
 };

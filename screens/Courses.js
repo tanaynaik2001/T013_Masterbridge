@@ -5,7 +5,7 @@ const Courses = () => {
   return (
     <View>
       <Course />
-      <Course />
+      
     </View>
   );
 };
